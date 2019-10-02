@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_hub_step_instance">
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Get Geographic Data from IP">b7c1aab0db9400108c020d53ca96191f</action>
+        <cid>98ed93a1-8fb6-455e-b254-3a0314b71c10</cid>
+        <extended_inputs/>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Parsed Returned Data</label>
+        <order>2</order>
+        <outputs/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_class_name>sys_hub_step_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-02 18:38:17</sys_created_on>
+        <sys_id>4619fe70dbd400108c020d53ca9619d4</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Parsed Returned Data</sys_name>
+        <sys_package display_value="IPInfo Spoke" source="x_376250_ipinfo_sp">71006e30db9400108c020d53ca961997</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="IPInfo Spoke">71006e30db9400108c020d53ca961997</sys_scope>
+        <sys_update_name>sys_hub_step_instance_4619fe70dbd400108c020d53ca9619d4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-02 18:38:17</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=4619fe70dbd400108c020d53ca9619d4"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>4619fe70dbd400108c020d53ca9619d4</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-02 18:38:17</sys_created_on>
+        <sys_id>4619fe70dbd400108c020d53ca9619fd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-02 18:38:17</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+		// Only parse the response body if the status code is 200	
+    	if (inputs.status_code == '200'){
+			
+          	// Parse the response_body input variable and save parsed object as responseBody
+          	var responseBody = JSON.parse(inputs.response_body);
+			
+          	// Map the parsed responseBody values to output variables
+          	outputs.host_1 = responseBody.hostname;
+			outputs.city = responseBody.city;
+			outputs.region = responseBody.region;
+          	outputs.country = responseBody.country;
+          
+          	// split the returned location into separate latitude and longitude values
+          	var locArray = responseBody.loc.split(",");
+          	outputs.latitude = locArray[0];
+          	outputs.longitude = locArray[1];
+      }
+})(inputs, outputs);
+
+</value>
+        <variable display_value="">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>4619fe70dbd400108c020d53ca9619d4</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-02 18:38:17</sys_created_on>
+        <sys_id>8219fe70dbd400108c020d53ca9619fd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-02 18:38:17</sys_updated_on>
+        <value>35aa573fd7802200bdbaee5b5e610375</value>
+        <variable display_value="">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=4619fe70dbd400108c020d53ca9619d4"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>application</field>
+        <id>4619fe70dbd400108c020d53ca9619d4</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-02 18:38:17</sys_created_on>
+        <sys_id>8619fe70dbd400108c020d53ca9619f0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-02 18:38:17</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>response_body</field>
+        <id>4619fe70dbd400108c020d53ca9619d4</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-02 18:38:17</sys_created_on>
+        <sys_id>4219fe70dbd400108c020d53ca9619fe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-02 18:38:17</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_4619fe70dbd400108c020d53ca9619d4</table>
+        <value>{{step[39b495cd-c399-433e-a716-be11a0eefef4].response_body}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>script</field>
+        <id>4619fe70dbd400108c020d53ca9619d4</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-02 18:38:17</sys_created_on>
+        <sys_id>4a19fe70dbd400108c020d53ca9619f0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-02 18:38:17</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>status_code</field>
+        <id>4619fe70dbd400108c020d53ca9619d4</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-02 18:38:17</sys_created_on>
+        <sys_id>0619fe70dbd400108c020d53ca9619fe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-02 18:38:17</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_4619fe70dbd400108c020d53ca9619d4</table>
+        <value>{{step[39b495cd-c399-433e-a716-be11a0eefef4].status_code}}</value>
+    </sys_element_mapping>
+</record_update>
